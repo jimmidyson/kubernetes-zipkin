@@ -1,0 +1,23 @@
+spring:
+  application:
+    # This ends up as the service name in zipkin
+    name: helloworld
+  sleuth:
+    sampler:
+      percentage: 1.0
+
+  cloud:
+    stream:
+      bindings:
+        output:
+          destination: zipkin
+          contentType: application/json
+      kafka:
+        binder:
+          brokers: kafka-at00l
+          zkNodes: 172.30.209.95
+
+sample:
+  zipkin:
+    # When enabled=false, traces log to the console. Comment to send to zipkin
+    enabled: true
